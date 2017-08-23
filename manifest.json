@@ -1,0 +1,13 @@
+{
+  "name": "PTA District 14",
+  "short_name": "PTA Dist 14",
+  "icons": [{
+    "src": "/public/favicon.png",
+    "sizes": "26x24",
+    "type": "image/png"
+    }],
+  "start_url": "/",
+  "background_color": "#41577d",
+  "display": "standalone",
+  "theme_color": "#9dabcd"
+}

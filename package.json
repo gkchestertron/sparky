@@ -1,0 +1,88 @@
+{
+  "name": "vape",
+  "description": "A Vue.js project",
+  "author": "john fellman <john.fellman@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "node vape/server",
+    "start": "cross-env NODE_ENV=production node vape/server",
+    "build": "rimraf vape/dist && npm run build:client && npm run build:server",
+    "build:client": "cross-env NODE_ENV=production webpack --config vape/build/webpack.client.config.js --progress --hide-modules",
+    "build:server": "cross-env NODE_ENV=production webpack --config vape/build/webpack.server.config.js --progress --hide-modules",
+    "test": "jest",
+    "vape": "touch config/server.js && touch config/client.js && node vape/cli/"
+  },
+  "engines": {
+    "node": ">=7.0",
+    "npm": ">=4.0"
+  },
+  "dependencies": {
+    "apollo-client": "^1.8.0",
+    "axios": "^0.16.2",
+    "babel-jest": "^20.0.3",
+    "body-parser": "^1.17.2",
+    "bootstrap-vue": "^0.18.0",
+    "compression": "^1.6.2",
+    "cross-env": "^4.0.0",
+    "es6-promise": "^4.1.0",
+    "express": "^4.15.2",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "firebase": "^3.7.2",
+    "fun_with_flags": "^1.4.4",
+    "graphql-tag": "^2.4.2",
+    "isomorphic-fetch": "^2.2.1",
+    "jest": "^20.0.4",
+    "jest-vue-preprocessor": "^1.1.0",
+    "lru-cache": "^4.0.2",
+    "mock-fs": "^4.4.1",
+    "nodemailer": "^4.0.1",
+    "pgmigrate": "^4.0.0",
+    "postgraphql": "^3.3.0",
+    "require-from-string": "^1.2.1",
+    "sanitize-html": "^1.14.1",
+    "serve-favicon": "^2.4.3",
+    "style-loader": "^0.18.2",
+    "vue": "^2.4.2",
+    "vue-router": "^2.5.0",
+    "vue-server-renderer": "^2.4.2",
+    "vuex": "^2.3.1",
+    "vuex-router-sync": "^4.1.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-env": "^1.4.0",
+    "css-loader": "^0.28.0",
+    "file-loader": "^0.11.1",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "glob": "^7.1.1",
+    "node-sass": "^4.5.3",
+    "rimraf": "^2.6.1",
+    "sass-loader": "^6.0.6",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "sw-precache-webpack-plugin": "^0.10.1",
+    "url-loader": "^0.5.8",
+    "vue-loader": "^12.0.2",
+    "vue-style-loader": "^3.0.0",
+    "vue-template-compiler": "^2.3.2",
+    "webpack": "^2.7.0",
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-hot-middleware": "^2.17.1",
+    "webpack-merge": "^4.0.0",
+    "webpack-node-externals": "^1.5.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "vue",
+      "json"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
+    }
+  }
+}

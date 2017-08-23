@@ -1,0 +1,10 @@
+create
+forms
+forms export
+init
+migrate
+migrate add
+migrate run
+template
+template dump
+template export

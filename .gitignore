@@ -1,0 +1,15 @@
+.DS_Store
+config/server.js
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+.idea
+*.iml
+*.swp
+*.swo
+./schema/2017-08-10T04:23:24.855Z-create-admin.sql
+vape.sql
+vape.pem
+vape/
+vape
