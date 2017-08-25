@@ -13,7 +13,7 @@
   }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
   .page-title-wrapper
     height 70px
     width 100%

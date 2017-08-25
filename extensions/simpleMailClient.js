@@ -1,4 +1,5 @@
-const config = require('../config/server')
+const path = require('path')
+const config = require(path.resolve('./config/server'))
 
 const nodemailer = require('nodemailer')
 

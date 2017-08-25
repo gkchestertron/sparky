@@ -11,11 +11,9 @@
 </template>
 
 <script>
-  import apollo from '../vape/ApolloClient'
-  import gql from 'graphql-tag'
-
   export default {
     name: 'app',
+
     mounted() {
       if (typeof(document) !== undefined) {
         setTimeout(_ => {
@@ -23,16 +21,6 @@
           document.getElementsByTagName('body')[0].style.backgroundImage = `url(${bg})`
         }, 1000)
       }
-
-      return apollo().query({
-        query: gql`{ currentPerson {
-          id
-          fullName
-        } }`
-      })
-      .then(result => {
-        this.$store.commit('SET_CURRENT_USER', { user: result.data.currentPerson })
-      })
     }
   }
 </script>

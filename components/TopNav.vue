@@ -11,7 +11,7 @@
 				<b-collapse is-nav id="nav_collapse">
 
 					<b-nav is-nav-bar>
-            <router-link  v-for="page in pages" :key="page.id" :to="{ path: page.route, params: {} }">
+            <router-link  v-if="!(page.name === 'login' && !!currentUser)" v-for="page in pages" :key="page.id" :to="{ path: page.route, params: {} }">
                 {{page.name}}
               </router-link>
 					</b-nav>

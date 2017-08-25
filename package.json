@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node vape/server",
     "start": "cross-env NODE_ENV=production node vape/server",
-    "build": "rimraf vape/dist && npm run build:client && npm run build:server",
+    "build": "rm -rf vape/dist && npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config vape/build/webpack.client.config.js --progress --hide-modules",
     "build:server": "cross-env NODE_ENV=production webpack --config vape/build/webpack.server.config.js --progress --hide-modules",
     "test": "jest",

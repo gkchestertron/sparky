@@ -1,17 +1,22 @@
 <template>
   <div class="col-md-6 col-offset-3">
     <b-card>
-      <b-form-input
-        v-model="email"
-        type="text"
-        placeholder="Enter your email"
-      ></b-form-input>
-      <b-form-input
-        v-model="password"
-        type="password"
-        placeholder="Enter your password"
-      ></b-form-input>
-      <b-button variant="primary" @click="login">Login</b-button>
+      <b-alert dismissable variant="danger" :show="!!error">
+        {{error}}
+      </b-alert>
+      <form @submit.prevent="login">
+        <b-form-input
+          v-model="email"
+          type="text"
+          placeholder="Enter your email"
+        ></b-form-input>
+        <b-form-input
+          v-model="password"
+          type="password"
+          placeholder="Enter your password"
+        ></b-form-input>
+        <b-button type="submit" variant="primary">Login</b-button>
+      </form>
     </b-card>
   </div>
 </template>
@@ -24,7 +29,8 @@
     data() {
       return {
         email: '',
-        password: ''
+        password: '',
+        error: ''
       }
     },
 
@@ -48,8 +54,25 @@
           }
         })
         .then(result => {
-          localStorage.setItem('authToken', result.data.authenticate.jwtToken)
-          window.location = window.location
+          let authToken = null
+
+          try {
+            authToken = result.data.authenticate.jwtToken
+          }
+          catch (err) {
+            console.error(err)
+          }
+
+          if (authToken) {
+            localStorage.setItem('authToken', authToken)
+            window.location.pathname = '/'
+          }
+          else {
+            this.error = 'Invalid login'
+          }
+        })
+        .catch(err => {
+          console.log(err)
         })
       }
     },
@@ -57,3 +80,10 @@
     name: 'login'
   }
 </script>
+
+<style lang="stylus" scoped>
+  label
+    color black
+  input
+    margin-bottom: 15px
+</style>
