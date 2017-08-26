@@ -2,16 +2,10 @@
 @import '../../node_modules/bootstrap/scss/_variables.scss';
 
 // custom bootstrap goes here
-$brand-info: #41577d;
+$brand-info: rgba(0,0,0,0.2);
 
 // import the rest of bootstrap
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
-
-.row {
-  .col-md-4 {
-    padding: 0px;
-  }
-}
 
 .social-icon {
   width: 35px;
@@ -24,7 +18,7 @@ body ul {
 
 body {
   background-color: #172214;
-  background-image: url(/public/background.jpg);
+  background-image: url(/public/bg.jpg);
   transition: background-image 1000ms ease-in 250ms;
   background-position: center center;
   background-repeat: no-repeat;

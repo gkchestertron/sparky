@@ -1,0 +1,14 @@
+box-shadow(args...)
+  -webkit-box-shadow args
+  -moz-box-shadow args
+  box-shadow args
+
+placeholder()
+  &::-webkit-input-placeholder
+    {block}
+  &:-moz-placeholder
+    {block}
+  &::-moz-placeholder
+    {block}
+  &:-ms-input-placeholder
+    {block}

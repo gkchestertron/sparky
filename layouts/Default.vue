@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <top-nav></top-nav>
     <transition name="fade" mode="out-in">
       <router-view class="view"></router-view>
@@ -12,26 +12,13 @@
 
 <script>
   export default {
-    name: 'app',
-
-    mounted() {
-      if (typeof(document) !== undefined) {
-        setTimeout(_ => {
-          var bg = `/public/bg/${Math.floor(Math.random() * 6) + 1}.jpg`
-          document.getElementsByTagName('body')[0].style.backgroundImage = `url(${bg})`
-        }, 1000)
-      }
-    }
+    name: 'app'
   }
 </script>
 
 <style lang="stylus">
-@import '../styles/stylus/custom.styl'
 html, body
   height 100%
-
-.container
-  padding-bottom 55px
 
 .footer
   font-size 12px
@@ -90,12 +77,6 @@ body
     text-decoration none
   a:active
     text-decoration none !important
-
-.logo
-  width 24px
-  margin-right 10px
-  display inline-block
-  vertical-align middle
 
 .view
   margin 0 auto

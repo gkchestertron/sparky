@@ -5,7 +5,7 @@
 				<b-nav-toggle target="nav_collapse"></b-nav-toggle>
 
 				<b-link class="navbar-brand" to="/">
-					<span>District 14 PTA</span>
+          <span>sparky</span>
 				</b-link>
 
 				<b-collapse is-nav id="nav_collapse">
@@ -61,13 +61,8 @@
 </script>
 
 <style lang="stylus" scoped>
-@import '../styles/stylus/custom.styl'
-
-li
-  list-style none
-
 .header
-  background-color $theme-color
+  background rgba(0,0,0,0.2)
   position fixed
   z-index 9999
   height 55px
