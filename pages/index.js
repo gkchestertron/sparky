@@ -5,7 +5,6 @@
 
 import About from './About.vue'
 import Contact from './Contact.vue'
-import Home from './Home.vue'
 import Login from './Login.vue'
 import Signup from './Signup.vue'
 import Splash from './Splash.vue'
@@ -13,7 +12,6 @@ import Splash from './Splash.vue'
 export default {
   About,
   Contact,
-  Home,
   Login,
   Signup,
   Splash,

@@ -5,13 +5,17 @@ create extension if not exists "pgcrypto";
 create table sparky_private.person_account (
   person_id        integer primary key references sparky.person(id) on delete cascade,
   email            text not null unique check (email ~* '^.+@.+\..+$'),
-  password_hash    text not null
+  password_hash    text not null,
+  verification     text not null unique check (char_length(verification) < 80),
+  verified         boolean default false
 );
 
 comment on table sparky_private.person_account is 'Private information about a person’s account.';
 comment on column sparky_private.person_account.person_id is 'The id of the person associated with this account.';
 comment on column sparky_private.person_account.email is 'The email address of the person.';
 comment on column sparky_private.person_account.password_hash is 'An opaque hash of the person’s password.';
+comment on column sparky_private.person_account.verification is 'The verification token for a user';
+comment on column sparky_private.person_account.verified is 'Verified status of user';
 
 -- register person function
 create function sparky.register_person(
@@ -27,8 +31,8 @@ begin
     (first_name, last_name)
     returning * into person;
 
-  insert into sparky_private.person_account (person_id, email, password_hash) values
-    (person.id, email, crypt(password, gen_salt('bf')));
+  insert into sparky_private.person_account (person_id, email, password_hash, verification) values
+    (person.id, email, crypt(password, gen_salt('bf')), gen_random_uuid());
 
   return person;
 end;

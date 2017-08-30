@@ -11,25 +11,16 @@ const transporter = nodemailer.createTransport({
   }
 })
 
-module.exports = function (req, res, next) {
-  const mailOptions = {
-    to: config.GMAIL_USERNAME,
-    subject: 'Website Contact Form',
-    text: `
-      name: ${req.body.name}
-      email: ${req.body.email}
-      message: 
-        ${req.body.message}
-      `
-  }
+module.exports = function simpleMail(options) {
+  const mailOptions = Object.assign({}, {
+    from: config.GMAIL_USERNAME,
+  }, options)
 
-  transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error)
-    } else {
-      console.log('Email sent: ' + info.response)
-    }
-
-    res.send('Email Sent')
+  return new Promise((resolve, reject) => {
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error)
+        return reject(error)
+      return resolve(info)
+    })
   })
 }

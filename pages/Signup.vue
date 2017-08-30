@@ -3,7 +3,7 @@
     <b-alert dismissable variant="danger" :show="!!error">
       {{error}}
     </b-alert>
-    <form @submit.prevent="login">
+    <form @submit.prevent="register">
       <div class="row">
         <div class="col-md-6">
           <b-form-input
@@ -40,9 +40,6 @@
 </template>
 
 <script>
-  import apollo from '../vape/ApolloClient'
-  import gql from 'graphql-tag'
-
   export default {
     data() {
       return {
@@ -51,49 +48,6 @@
         lastName: '',
         password: '',
         error: ''
-      }
-    },
-
-    methods: {
-      login() {
-        return apollo().mutate({
-          mutation: gql`
-            mutation ($email: String!, $password: String!) {
-              authenticate(input: {
-                email: $email,
-                password: $password
-              }) {
-                clientMutationId
-                jwtToken
-              }
-            }
-          `,
-          variables: {
-            email    : this.email,
-            password : this.password
-          }
-        })
-        .then(result => {
-          let authToken = null
-
-          try {
-            authToken = result.data.authenticate.jwtToken
-          }
-          catch (err) {
-            console.error(err)
-          }
-
-          if (authToken) {
-            localStorage.setItem('authToken', authToken)
-            window.location.pathname = '/'
-          }
-          else {
-            this.error = 'Invalid login'
-          }
-        })
-        .catch(err => {
-          console.log(err)
-        })
       }
     },
 

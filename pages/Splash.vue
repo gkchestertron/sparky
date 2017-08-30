@@ -19,11 +19,13 @@
   export default {
     data() {
       return {
-        description: 'Articifial Intelligence assistant that makes buying things not suck'
+        description: 'Articifial Intelligence that makes buying things not suck'
       }
     },
 
-    name: 'splash'
+    name: 'splash',
+
+    route: '/'
   }
 </script>
 
@@ -34,8 +36,10 @@
     font-size x-large
     width 100%
     padding 35px
+
   .logo-wrapper
     text-align center
+
   .logo
     max-width 100%
     margin-bottom 35px

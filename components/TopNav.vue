@@ -48,11 +48,6 @@
     },
 
     methods: {
-      logout() {
-        localStorage.removeItem('authToken')
-        window.location.pathname = ''
-      },
-
       toggleEditable() {
         this.$set(this.$store.state, 'editing', !this.$store.state.editing)
       },

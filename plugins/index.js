@@ -3,8 +3,10 @@
   Remove these lines or add custom file to override builder
 */
 
+import auth from './auth'
 import staticPlugin from './staticPlugin'
 
 export default {
+  auth,
   staticPlugin,
 }
